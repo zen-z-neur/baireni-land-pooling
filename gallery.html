@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>फोटो तथा भिडियो ग्यालरी | बैरेनी जग्गा एकीकरण आयोजना - व्यास नगरपालिका, तनहुँ</title>
+    <meta name="description" content="बैरेनी जग्गा एकीकरण आयोजनाका मास्टरप्लान, सडक तथा पूर्वाधार निर्माण, समुदाय बैठक, अवलोकन भ्रमण र प्राकृतिक दृश्यहरूको फोटो ग्यालरी।">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .gallery-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+        .filter-btn {
+            padding: 9px 22px;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            background: white;
+            color: var(--text-dark);
+            cursor: pointer;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 14.5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .gallery-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+        .gallery-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            background: #fff;
+            transition: var(--transition);
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .gallery-img-wrap {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        .gallery-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-card:hover .gallery-img-wrap img {
+            transform: scale(1.06);
+        }
+        .gallery-card .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 43, 69, 0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s;
+            color: white;
+            font-size: 28px;
+        }
+        .gallery-card:hover .img-overlay { opacity: 1; }
+        .gallery-caption {
+            padding: 14px 18px;
+        }
+        .gallery-caption h4 {
+            font-size: 16px;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        .gallery-caption p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin: 0;
+        }
+        .gallery-tag-pill {
+            display: inline-block;
+            background: #eaf2f8;
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-inner {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .lightbox-inner img {
+            width: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            background: #000;
+            display: block;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .lightbox-text {
+            padding: 16px 22px;
+            background: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid-full { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid-full { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-map-marker-alt"></i> बैरेनी, व्यास नगरपालिका-१०, तनहुँ, गण्डकी प्रदेश</span>
+                <span><i class="fas fa-phone-alt"></i> ०६५-५६०१६६, ५६०६३२</span>
+                <span><i class="fas fa-envelope"></i> info@vyasmun.gov.np</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="contact.html"><i class="fas fa-headset"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="images/nepal-emblem.svg" alt="नेपाल सरकार निशान छाप" class="gov-logo">
+                    <div class="title-section">
+                        <p class="gov-title">नेपाल सरकार | गण्डकी प्रदेश | व्यास नगरपालिका (दमौली, तनहुँ)</p>
+                        <h1 class="site-title">बैरेनी जग्गा एकीकरण आयोजना</h1>
+                        <p class="site-subtitle">Baireni Land Pooling Project (Phase - I) | Vyas-10, Tanahun</p>
+                    </div>
+                </div>
+                <div class="header-emblem">
+                    <div class="emblem-circle">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> गृहपृष्ठ</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> आयोजना बारे</a></li>
+                <li><a href="progress.html"><i class="fas fa-tasks"></i> कार्य प्रगति</a></li>
+                <li><a href="map.html"><i class="fas fa-map-marked-alt"></i> नक्सा तथा भू-उपयोग</a></li>
+                <li><a href="news.html"><i class="fas fa-newspaper"></i> सूचना तथा समाचार</a></li>
+                <li><a href="documents.html"><i class="fas fa-file-alt"></i> दस्तावेज तथा कानुन</a></li>
+                <li class="active"><a href="gallery.html"><i class="fas fa-images"></i> फोटो ग्यालरी</a></li>
+                <li><a href="contact.html"><i class="fas fa-phone-alt"></i> सम्पर्क तथा सुझाव</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="background: linear-gradient(135deg, rgba(13,43,69,0.9), rgba(26,82,118,0.95)), url('images/baireni_roads.jpg') center/cover;">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1><i class="fas fa-images"></i> फोटो तथा दृश्य ग्यालरी</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">गृहपृष्ठ</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>फोटो ग्यालरी</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="content-section" style="padding: 50px 0;">
+        <div class="container">
+            <!-- Filters -->
+            <div class="gallery-filter">
+                <button class="filter-btn active" onclick="filterGallery('all', this)">सबै तस्बिरहरू</button>
+                <button class="filter-btn" onclick="filterGallery('masterplan', this)">मास्टरप्लान तथा नक्सा</button>
+                <button class="filter-btn" onclick="filterGallery('infra', this)">सडक तथा पूर्वाधार निर्माण</button>
+                <button class="filter-btn" onclick="filterGallery('nature', this)">प्राकृतिक दृश्य तथा नदी तट</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="gallery-grid-full">
+                <!-- Card 1 -->
+                <div class="gallery-card" data-category="masterplan" onclick="openLightbox('images/baireni_masterplan.jpg', 'बैरेनी जग्गा एकीकरण आयोजना थ्रीडी मास्टरप्लान', 'मादी नदीको डीलदेखि व्यास मार्गसम्म फैलिएको २६१ रोपनी क्षेत्रको आधुनिक बस्ती विकास मास्टरप्लान')">
+                    <div class="gallery-img-wrap">
+                        <img src="images/baireni_masterplan.jpg" alt="मास्टरप्लान">
+                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <span class="gallery-tag-pill">मास्टरप्लान</span>
+                        <h4>आयोजनाको थ्रीडी मास्टरप्लान डिजाइन</h4>
+                        <p>सडक, पार्क, आवासीय प्लट र हरियालीको योजनाबद्ध खाका</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="gallery-card" data-category="infra" onclick="openLightbox('images/baireni_roads.jpg', 'कालोपत्रे सडक तथा टिक ड्रेन नाला', 'बैरेनी आयोजना क्षेत्रमा निर्माण सम्पन्न कालोपत्रे सडक, कभर नाला तथा बिजुली पोलहरू')">
+                    <div class="gallery-img-wrap">
+                        <img src="images/baireni_roads.jpg" alt="सडक निर्माण">
+                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <span class="gallery-tag-pill">सडक पूर्वाधार</span>
+                        <h4>कालोपत्रे सडक तथा टिक ड्रेन नाला</h4>
+                        <p>८ मि. र ७ मि. चौडा सडकमा नाला कभर तथा बिजुली पोल</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gallery-card" data-category="nature" onclick="openLightbox('images/baireni_aerial.jpg', 'बैरेनी उपत्यका तथा मादी नदी डिलको विहङ्गम दृश्य', 'महर्षि वेदव्यासको तपोभूमि दमौली नजिकैको प्राकृतिक सुन्दरता')">
+                    <div class="gallery-img-wrap">
+                        <img src="images/baireni_aerial.jpg" alt="बैरेनी दृश्य">
+                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <span class="gallery-tag-pill">प्राकृतिक दृश्य</span>
+                        <h4>बैरेनी क्षेत्र तथा मादी नदीको फाँट</h4>
+                        <p>मादी नदी कटानको डिल र पहाडको काखमा अवस्थित रमणीय क्षेत्र</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="gallery-card" data-category="infra" onclick="openLightbox('images/hero-baireni.jpg', 'पूर्वाधार विकास तथा बस्ती लेआउट', 'आयोजना क्षेत्रमा जग्गा सम्याउने तथा सिमाना पिल्लर राख्ने कार्य')">
+                    <div class="gallery-img-wrap">
+                        <img src="images/hero-baireni.jpg" alt="पूर्वाधार लेआउट">
+                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <span class="gallery-tag-pill">पूर्वाधार निर्माण</span>
+                        <h4>बस्ती लेआउट तथा सिमाना रेखांकन</h4>
+                        <p>स्वीकृत ब्लक प्लान अनुसार विकसित घडेरीको चारकिल्ला रेखांकन</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="gallery-card" data-category="masterplan" onclick="openLightbox('images/baireni_masterplan.jpg', 'मादी रिभरफ्रन्ट तथा हरित पार्क क्षेत्र', 'आयोजनाको पश्चिम डीलमा मादी नदी किनारको हरित खुला क्षेत्र')">
+                    <div class="gallery-img-wrap">
+                        <img src="images/baireni_masterplan.jpg" alt="हरित खुला क्षेत्र">
+                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <span class="gallery-tag-pill">मास्टरप्लान</span>
+                        <h4>सार्वजनिक खुला क्षेत्र र हरित पार्क (८.०५%)</h4>
+                        <p>२१ रोपनी २ आना क्षेत्रफलमा व्यवस्थित खुला सामुदायिक पार्क</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="gallery-card" data-category="infra" onclick="openLightbox('images/baireni_roads.jpg', 'खानेपानी तथा विद्युत वितरण प्रणाली', 'HDPE ७,४२८ मिटर पाइपलाइन र PSC पोल संरचना')">
+                    <div class="gallery-img-wrap">
+                        <img src="images/baireni_roads.jpg" alt="विद्युत तथा पानी">
+                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <span class="gallery-tag-pill">उपयोगिता सेवा</span>
+                        <h4>Closed-Loop खानेपानी तथा विद्युतीकरण</h4>
+                        <p>घरघरमा शुद्ध पानी र सुरक्षित बिजुली आपूर्तिको आधुनिक संरचना</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-inner" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox(null)"><i class="fas fa-times"></i></button>
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-text">
+                <h3 id="lightbox-title" style="color:var(--primary-dark); font-size:19px; margin-bottom:6px;"></h3>
+                <p id="lightbox-desc" style="font-size:14px; color:var(--text-medium); margin:0;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+                        <img src="images/nepal-emblem.svg" alt="निशान छाप" style="width:45px; height:auto;">
+                        <h3 style="margin:0; font-size:18px;">बैरेनी जग्गा एकीकरण आयोजना</h3>
+                    </div>
+                    <p>व्यास नगरपालिका, नगर कार्यपालिकाको कार्यालय, दमौली, तनहुँ अन्तर्गत सञ्चालित दिगो, सुरक्षित र व्यवस्थित शहरी विकासको नमुना परियोजना।</p>
+                </div>
+                <div class="footer-links">
+                    <h4>द्रुत लिङ्कहरू</h4>
+                    <ul>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> आयोजना बारे</a></li>
+                        <li><a href="progress.html"><i class="fas fa-chevron-right"></i> भौतिक प्रगति विवरण</a></li>
+                        <li><a href="map.html"><i class="fas fa-chevron-right"></i> स्वीकृत नक्सा तथा भू-उपयोग</a></li>
+                        <li><a href="news.html"><i class="fas fa-chevron-right"></i> सूचना तथा निर्णयहरू</a></li>
+                        <li><a href="documents.html"><i class="fas fa-chevron-right"></i> दस्तावेज तथा राजपत्र</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> फोटो ग्यालरी</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>सम्बन्धित निकायहरू</h4>
+                    <ul>
+                        <li><a href="https://vyasmun.gov.np" target="_blank"><i class="fas fa-external-link-alt"></i> व्यास नगरपालिका</a></li>
+                        <li><a href="https://moud.gov.np" target="_blank"><i class="fas fa-external-link-alt"></i> शहरी विकास मन्त्रालय</a></li>
+                        <li><a href="https://tdf.org.np" target="_blank"><i class="fas fa-external-link-alt"></i> नगर विकास कोष (TDF)</a></li>
+                        <li><a href="https://nset.org.np" target="_blank"><i class="fas fa-external-link-alt"></i> NSET नेपाल</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>सम्पर्क विवरण</h4>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>बैरेनी, व्यास-१०, तनहुँ, गण्डकी प्रदेश</span></div>
+                    <div class="contact-item"><i class="fas fa-building"></i><span>नगर कार्यपालिका कार्यालय: दमौली, तनहुँ</span></div>
+                    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>०६५-५६०१६६, ०६५-५६०६३२</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>info@vyasmun.gov.np</span></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© २०८१ बैरेनी जग्गा एकीकरण आयोजना | व्यास नगरपालिका, तनहुँ | सर्वाधिकार सुरक्षित</p>
+                <p>नेपाल सरकार, शहरी विकास मन्त्रालयबाट स्वीकृत तथा नगर विकास कोषको ऋण सहयोगमा सञ्चालित</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.gallery-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openLightbox(src, title, desc) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-title').textContent = title;
+            document.getElementById('lightbox-desc').textContent = desc;
+            document.getElementById('lightbox').classList.add('open');
+        }
+
+        function closeLightbox(e) {
+            if (!e || e.target.id === 'lightbox' || e.target.closest('.lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('open');
+            }
+        }
+    </script>
+</body>
+</html>
