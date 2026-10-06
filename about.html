@@ -311,71 +311,173 @@
                 </div>
             </div>
 
-            <!-- 3. Users Committee & 4. PIU side by side -->
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                <!-- Users Committee -->
-                <div style="background:#fff; border-radius:var(--radius); padding:25px; box-shadow:var(--shadow); border:1px solid var(--border);">
-                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px; border-bottom:2px solid var(--secondary); padding-bottom:10px;">
-                        <i class="fas fa-users" style="font-size:24px; color:var(--secondary-dark);"></i>
-                        <div>
-                            <h3 style="margin:0; font-size:19px; color:var(--primary-dark);">३. आयोजना उपभोक्ता समिति</h3>
-                            <small style="color:var(--text-light);">स्थानीय जग्गाधनीहरूको प्रतिनिधित्व, सर्वदलीय सहमति र समावेशी सहभागिता</small>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="gov-table">
-                            <thead>
-                                <tr><th>क्र.सं.</th><th>पद</th><th>नाम</th><th>कैफियत</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>१</td><td><strong>अध्यक्ष</strong></td><td><strong>श्रीराम कुँवर</strong></td><td>स्थानीय जग्गाधनी नेतृत्व</td></tr>
-                                <tr><td>२</td><td>उपाध्यक्ष</td><td>मायानाथ कोइराला</td><td>पदाधिकारी</td></tr>
-                                <tr><td>३</td><td>सचिव</td><td>खम बहादुर दरै</td><td>आदिवासी दरै समुदाय</td></tr>
-                                <tr><td>४</td><td>कोषाध्यक्ष</td><td>गायत्री पुडासैनी</td><td>महिला पदाधिकारी</td></tr>
-                                <tr><td>५</td><td>सदस्य</td><td>भूमिलाल ढकाल</td><td>सदस्य</td></tr>
-                                <tr><td>६</td><td>सदस्य</td><td>फुन नारायण तिवारी</td><td>सदस्य</td></tr>
-                                <tr><td>७</td><td>सदस्य</td><td>धन बहादुर दरै</td><td>आदिवासी दरै समुदाय</td></tr>
-                                <tr><td>८</td><td>सदस्य</td><td>होम बहादुर बोटे</td><td>आदिवासी बोटे समुदाय</td></tr>
-                                <tr><td>९</td><td>सदस्य</td><td>सिता बोटे</td><td>आदिवासी बोटे / महिला</td></tr>
-                                <tr><td>१०</td><td>सदस्य</td><td>लक्ष्मी परियार</td><td>दलित / महिला प्रतिनिधि</td></tr>
-                                <tr><td>११</td><td>सदस्य</td><td>देवका देवी पौडेल</td><td>महिला प्रतिनिधि</td></tr>
-                                <tr><td>१२</td><td>सदस्य</td><td>बाबुराम पौडेल</td><td>सदस्य</td></tr>
-                            </tbody>
-                        </table>
+            <!-- 3. Users Committee (Full width) -->
+            <div style="background:#fff; border-radius:var(--radius); padding:25px; margin-bottom:30px; box-shadow:var(--shadow); border:1px solid var(--border);">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px; border-bottom:2px solid var(--secondary); padding-bottom:10px;">
+                    <i class="fas fa-users" style="font-size:24px; color:var(--secondary-dark);"></i>
+                    <div>
+                        <h3 style="margin:0; font-size:20px; color:var(--primary-dark);">३. आयोजना उपभोक्ता समिति</h3>
+                        <small style="color:var(--text-light);">स्थानीय जग्गाधनीहरूको प्रतिनिधित्व, सर्वदलीय सहमति र समावेशी सहभागिता</small>
                     </div>
                 </div>
+                <div class="table-responsive">
+                    <table class="gov-table">
+                        <thead>
+                            <tr>
+                                <th style="width:60px; text-align:center;">क्र.सं.</th>
+                                <th>पद</th>
+                                <th>नाम</th>
+                                <th>सम्पर्क</th>
+                                <th>कैफियत</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:center;">१</td>
+                                <td><strong>अध्यक्ष</strong></td>
+                                <td><strong>श्रीराम कुँवर</strong></td>
+                                <td>
+                                    <a href="tel:9846541425" style="color:var(--primary); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८४६५४१४२५
+                                    </a>
+                                </td>
+                                <td>स्थानीय जग्गाधनी नेतृत्व</td>
+                            </tr>
+                            <tr><td style="text-align:center;">२</td><td>उपाध्यक्ष</td><td>मायानाथ कोइराला</td><td>-</td><td>पदाधिकारी</td></tr>
+                            <tr><td style="text-align:center;">३</td><td>सचिव</td><td>खम बहादुर दरै</td><td>-</td><td>आदिवासी दरै समुदाय</td></tr>
+                            <tr><td style="text-align:center;">४</td><td>कोषाध्यक्ष</td><td>गायत्री पुडासैनी</td><td>-</td><td>महिला पदाधिकारी</td></tr>
+                            <tr><td style="text-align:center;">५</td><td>सदस्य</td><td>भूमिलाल ढकाल</td><td>-</td><td>सदस्य</td></tr>
+                            <tr><td style="text-align:center;">६</td><td>सदस्य</td><td>फुन नारायण तिवारी</td><td>-</td><td>सदस्य</td></tr>
+                            <tr><td style="text-align:center;">७</td><td>सदस्य</td><td>धन बहादुर दरै</td><td>-</td><td>आदिवासी दरै समुदाय</td></tr>
+                            <tr><td style="text-align:center;">८</td><td>सदस्य</td><td>होम बहादुर बोटे</td><td>-</td><td>आदिवासी बोटे समुदाय</td></tr>
+                            <tr><td style="text-align:center;">९</td><td>सदस्य</td><td>सिता बोटे</td><td>-</td><td>आदिवासी बोटे / महिला</td></tr>
+                            <tr><td style="text-align:center;">१०</td><td>सदस्य</td><td>लक्ष्मी परियार</td><td>-</td><td>दलित / महिला प्रतिनिधि</td></tr>
+                            <tr><td style="text-align:center;">११</td><td>सदस्य</td><td>देवका देवी पौडेल</td><td>-</td><td>महिला प्रतिनिधि</td></tr>
+                            <tr><td style="text-align:center;">१२</td><td>सदस्य</td><td>बाबुराम पौडेल</td><td>-</td><td>सदस्य</td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <!-- PIU Team -->
-                <div style="background:#fff; border-radius:var(--radius); padding:25px; box-shadow:var(--shadow); border:1px solid var(--border);">
-                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px; border-bottom:2px solid var(--primary); padding-bottom:10px;">
-                        <i class="fas fa-hard-hat" style="font-size:24px; color:var(--primary);"></i>
-                        <div>
-                            <h3 style="margin:0; font-size:19px; color:var(--primary-dark);">४. आयोजना कार्यान्वयन इकाई (PIU)</h3>
-                            <small style="color:var(--text-light);">इन्जिनियरिङ डिजाइन, लंग शीट, चक्लाबन्दी नक्सा, ठेक्का व्यवस्थापन र प्राविधिक टोली</small>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="gov-table">
-                            <thead>
-                                <tr><th>क्र.सं.</th><th>पद</th><th>कर्मचारीको नाम</th><th>सम्पर्क फोन</th><th>जिम्मेवारी</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>१</td><td><strong>आयोजना प्रमुख</strong></td><td><strong>ई. रविन्द्र लाल मूल</strong></td><td><a href="tel:9856043491" style="color:var(--primary); font-weight:700; text-decoration:none;"><i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८५६०४३४९१</a></td><td>समग्र प्राविधिक तथा प्रशासनिक नेतृत्व</td></tr>
-                                <tr><td>२</td><td>इन्जिनियर</td><td>ई. कपिल रिजाल</td><td><a href="tel:9840245225" style="color:var(--primary); font-weight:700; text-decoration:none;"><i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८४०२४५२२५</a></td><td>पूर्वाधार तथा निर्माण सुपरिवेक्षण</td></tr>
-                                <tr><td>३</td><td>आर्किटेक्ट</td><td>आ. मन्दिप श्रेष्ठ</td><td><a href="tel:9840091001" style="color:var(--primary); font-weight:700; text-decoration:none;"><i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८४००९१००१</a></td><td>शहरी योजना तथा ब्लक लेआउट</td></tr>
-                                <tr><td>४</td><td>वरिष्ठ सब-इन्जिनियर</td><td>ब.स.ई. विकास रिमाल</td><td>-</td><td>फिल्ड निर्माण तथा गुणस्तर</td></tr>
-                                <tr><td>५</td><td>सर्वेक्षक / अमिन</td><td>रोहित दरै</td><td><a href="tel:9805887533" style="color:var(--primary); font-weight:700; text-decoration:none;"><i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८०५८८७५३३</a></td><td>फिल्ड नापजाँच, कित्ताकाट तथा सिमाना</td></tr>
-                                <tr><td>६</td><td>कार्यालय सहयोगी</td><td>सुर्य कुमारी दरै</td><td>-</td><td>कार्यालय व्यवस्थापन तथा सेवा</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- Sub committees -->
+                <div style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
+                    <h5 style="color:var(--primary-dark); margin-bottom:8px;"><i class="fas fa-balance-scale"></i> सहायक उप-समितिहरू (उपभोक्ता समिति अन्तर्गत):</h5>
+                    <p style="font-size:13.5px; margin-bottom:6px;"><strong>अनुगमन उप-समिति:</strong> संयोजक: ऋषिराम ढुंगाना | सदस्यहरू: यज्ञप्रसाद गौतम, सागर घिमिरे, अञ्जलि दरै, मनमाया बोटे</p>
+                    <p style="font-size:13.5px; margin:0;"><strong>विवाद व्यवस्थापन उप-समिति:</strong> संयोजक: मायानाथ कोइराला | सदस्यहरू: दुर्गा पौडेल, नारायण अधिकारी</p>
+                </div>
+            </div>
 
-                    <!-- Sub committees -->
-                    <div style="margin-top:20px; padding:15px; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
-                        <h5 style="color:var(--primary-dark); margin-bottom:8px;"><i class="fas fa-balance-scale"></i> सहायक उप-समितिहरू (उपभोक्ता समिति अन्तर्गत):</h5>
-                        <p style="font-size:13.5px; margin-bottom:6px;"><strong>अनुगमन उप-समिति:</strong> संयोजक: ऋषिराम ढुंगाना | सदस्यहरू: यज्ञप्रसाद गौतम, सागर घिमिरे, अञ्जलि दरै, मनमाया बोटे</p>
-                        <p style="font-size:13.5px;"><strong>विवाद व्यवस्थापन उप-समिति:</strong> संयोजक: मायानाथ कोइराला | सदस्यहरू: दुर्गा पौडेल, नारायण अधिकारी</p>
+            <!-- 4. PIU Team (Full width) -->
+            <div style="background:#fff; border-radius:var(--radius); padding:25px; margin-bottom:30px; box-shadow:var(--shadow); border:1px solid var(--border);">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px; border-bottom:2px solid var(--primary); padding-bottom:10px;">
+                    <i class="fas fa-hard-hat" style="font-size:24px; color:var(--primary);"></i>
+                    <div>
+                        <h3 style="margin:0; font-size:20px; color:var(--primary-dark);">४. आयोजना कार्यान्वयन इकाई (PIU)</h3>
+                        <small style="color:var(--text-light);">इन्जिनियरिङ डिजाइन, लंग शीट, चक्लाबन्दी नक्सा, ठेक्का व्यवस्थापन र प्राविधिक टोली</small>
                     </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="gov-table">
+                        <thead>
+                            <tr>
+                                <th style="width:60px; text-align:center;">क्र.सं.</th>
+                                <th>पद</th>
+                                <th>कर्मचारीको नाम</th>
+                                <th>सम्पर्क फोन</th>
+                                <th>आधिकारिक इमेल</th>
+                                <th>जिम्मेवारी</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:center;">१</td>
+                                <td><strong>आयोजना प्रमुख / व.इ.</strong></td>
+                                <td><strong>ई. रविन्द्र लाल मूल</strong></td>
+                                <td>
+                                    <a href="tel:9856043491" style="color:var(--primary); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८५६०४३४९१
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:ravindralalmul@gmail.com" style="color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i> ravindralalmul@gmail.com
+                                    </a>
+                                </td>
+                                <td>समग्र प्राविधिक तथा प्रशासनिक नेतृत्व</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">२</td>
+                                <td><strong>इन्जिनियर</strong></td>
+                                <td>ई. कपिल रिजाल</td>
+                                <td>
+                                    <a href="tel:9840245225" style="color:var(--primary); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८४०२४५२२५
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:kapil.landpooling@gmail.com" style="color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i> kapil.landpooling@gmail.com
+                                    </a>
+                                </td>
+                                <td>पूर्वाधार तथा निर्माण सुपरिवेक्षण</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">३</td>
+                                <td><strong>आर्किटेक्ट / इन्जिनियर</strong></td>
+                                <td>ई. मन्दिप श्रेष्ठ</td>
+                                <td>
+                                    <a href="tel:9840091001" style="color:var(--primary); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८४००९१००१
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:mandeep.landpooling@gmail.com" style="color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i> mandeep.landpooling@gmail.com
+                                    </a>
+                                </td>
+                                <td>शहरी योजना, ब्लक लेआउट तथा डिजाइन</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">४</td>
+                                <td><strong>वरिष्ठ सब-इन्जिनियर</strong></td>
+                                <td>ब.स.ई. विकास रिमाल</td>
+                                <td>
+                                    <a href="tel:9846260363" style="color:var(--primary); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८४६२६०३६३
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:civildost77@gmail.com" style="color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i> civildost77@gmail.com
+                                    </a>
+                                </td>
+                                <td>फिल्ड निर्माण तथा गुणस्तर सुपरिवेक्षण</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">५</td>
+                                <td><strong>सर्वेक्षक / अमिन</strong></td>
+                                <td>रोहित दरै</td>
+                                <td>
+                                    <a href="tel:9805887533" style="color:var(--primary); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11px;"></i> ९८०५८८७५३३
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:rohit.landpooling@gmail.com" style="color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                                        <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i> rohit.landpooling@gmail.com
+                                    </a>
+                                </td>
+                                <td>फिल्ड नापजाँच, कित्ताकाट तथा सिमाना सोधपुछ</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">६</td>
+                                <td>कार्यालय सहयोगी</td>
+                                <td>सुर्य कुमारी दरै</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>कार्यालय व्यवस्थापन तथा सेवा सहयोग</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
