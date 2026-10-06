@@ -9,175 +9,207 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .gallery-filter {
+        /* Gallery Controls Bar */
+        .gallery-controls-bar {
             display: flex;
-            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 35px;
-        }
-        .filter-btn {
-            padding: 9px 22px;
-            border: 2px solid var(--border);
-            border-radius: 25px;
-            background: white;
-            color: var(--text-dark);
-            cursor: pointer;
-            font-family: 'Hind Siliguri', sans-serif;
-            font-size: 14.5px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        .gallery-grid-full {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-        .gallery-card {
-            border-radius: var(--radius);
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            box-shadow: var(--shadow);
+            gap: 15px;
+            background: #ffffff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border);
-            background: #fff;
-            transition: var(--transition);
+            margin-bottom: 25px;
         }
-        .gallery-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+        .gallery-live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14.5px;
+            color: var(--text-dark);
+            font-weight: 600;
         }
-        .gallery-img-wrap {
+        .live-pulse {
+            width: 10px;
+            height: 10px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 rgba(39, 174, 96, 0.7);
+            animation: pulse-green 1.8s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(39, 174, 96, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+        }
+
+        /* Pure Photo Grid (NO captions) */
+        .pure-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .photo-tile {
             position: relative;
-            aspect-ratio: 16/10;
+            aspect-ratio: 4 / 3;
+            border-radius: 10px;
             overflow: hidden;
+            cursor: pointer;
+            background: #e2e8f0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
         }
-        .gallery-img-wrap img {
+        .photo-tile:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(13, 43, 69, 0.2);
+            z-index: 2;
+        }
+        .photo-tile img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            display: block;
+            transition: transform 0.5s ease;
         }
-        .gallery-card:hover .gallery-img-wrap img {
-            transform: scale(1.06);
+        .photo-tile:hover img {
+            transform: scale(1.07);
         }
-        .gallery-card .img-overlay {
+        .photo-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(13, 43, 69, 0.65);
+            background: rgba(13, 43, 69, 0.45);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: all 0.3s;
-            color: white;
-            font-size: 28px;
+            transition: opacity 0.25s ease;
         }
-        .gallery-card:hover .img-overlay { opacity: 1; }
-        .gallery-caption {
-            padding: 14px 18px;
+        .photo-tile:hover .photo-overlay {
+            opacity: 1;
         }
-        .gallery-caption h4 {
-            font-size: 16px;
-            color: var(--primary-dark);
-            margin-bottom: 5px;
-        }
-        .gallery-caption p {
-            font-size: 13px;
-            color: var(--text-light);
-            margin: 0;
-        }
-        .gallery-tag-pill {
-            display: inline-block;
-            background: #eaf2f8;
+        .photo-overlay-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.95);
             color: var(--primary);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 6px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            transform: scale(0.75);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        .photo-tile:hover .photo-overlay-icon {
+            transform: scale(1);
         }
 
-        /* Lightbox */
+        /* Lightbox Modal (Pure Minimalist, No captions) */
         .lightbox {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.92);
-            z-index: 9999;
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 99999;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 15px;
         }
         .lightbox.open { display: flex; }
-        .lightbox-inner {
-            max-width: 900px;
-            width: 100%;
+        .lightbox-content-wrap {
             position: relative;
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
+            max-width: 94vw;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .lightbox-inner img {
-            width: 100%;
-            max-height: 75vh;
+        .lightbox-img-el {
+            max-width: 92vw;
+            max-height: 84vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
             object-fit: contain;
-            background: #000;
-            display: block;
+            user-select: none;
         }
-        .lightbox-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0,0,0,0.7);
+        .lightbox-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255,255,255,0.25);
             color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 10;
-        }
-        .lightbox-nav {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.65);
-            color: white;
-            border: none;
             border-radius: 50%;
             width: 44px;
             height: 44px;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
-            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: all 0.25s;
+            z-index: 100000;
         }
-        .lightbox-nav:hover {
-            background: rgba(0,0,0,0.9);
-            transform: translateY(-50%) scale(1.08);
+        .lightbox-close-btn:hover {
+            background: rgba(231, 76, 60, 0.85);
+            transform: rotate(90deg);
         }
-        .lightbox-prev { left: 15px; }
-        .lightbox-next { right: 15px; }
-        .lightbox-text {
-            padding: 16px 22px;
-            background: #fff;
+        .lightbox-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ffffff;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 19px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            z-index: 100000;
+        }
+        .lightbox-arrow:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .lightbox-arrow-left { left: 20px; }
+        .lightbox-arrow-right { right: 20px; }
+        .lightbox-counter-pill {
+            margin-top: 12px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13.5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        @media (max-width: 900px) {
-            .gallery-grid-full { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 1100px) {
+            .pure-photo-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
         }
-        @media (max-width: 600px) {
-            .gallery-grid-full { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .pure-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .lightbox-arrow { width: 40px; height: 40px; font-size: 16px; }
+            .lightbox-arrow-left { left: 10px; }
+            .lightbox-arrow-right { right: 10px; }
+            .lightbox-close-btn { top: 15px; right: 15px; width: 38px; height: 38px; font-size: 17px; }
+        }
+        @media (max-width: 480px) {
+            .pure-photo-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -251,140 +283,46 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="content-section" style="padding: 50px 0;">
+    <!-- Gallery Section (Pure Photos, Zero Captions, Real-Time Loader) -->
+    <section class="content-section" style="padding: 45px 0 75px 0; background: #fdfefe;">
         <div class="container">
-            <!-- Filters -->
-            <div class="gallery-filter">
-                <button class="filter-btn active" onclick="filterGallery('all', this)">सबै तस्बिरहरू</button>
-                <button class="filter-btn" onclick="filterGallery('masterplan', this)">मास्टरप्लान तथा नक्सा</button>
-                <button class="filter-btn" onclick="filterGallery('infra', this)">सडक तथा पूर्वाधार निर्माण</button>
-                <button class="filter-btn" onclick="filterGallery('nature', this)">प्राकृतिक दृश्य तथा नदी तट</button>
+            <!-- Controls Bar: Real-time Indicator & Count -->
+            <div class="gallery-controls-bar">
+                <div class="gallery-live-badge">
+                    <span class="live-pulse"></span>
+                    <span>रियल-टाइम ग्यालरी: <code>gallery_photos/</code></span>
+                    <span style="color:var(--text-light); margin:0 4px;">•</span>
+                    <span style="color:var(--primary); font-weight:700;">कुल उपलब्ध तस्बिर: <strong id="gallery-count">०</strong></span>
+                </div>
+                <div>
+                    <button id="refresh-gallery-btn" class="btn btn-outline-primary" style="padding:7px 16px; font-size:13px; border-radius:20px; display:inline-flex; align-items:center; gap:8px;" onclick="loadPhotosRealTime(true)">
+                        <i class="fas fa-sync-alt" id="refresh-icon"></i> रिफ्रेस (ताजा लोड)
+                    </button>
+                </div>
             </div>
 
-            <!-- Grid -->
-            <div class="gallery-grid-full">
-                <!-- Card 1 -->
-                <div class="gallery-card" data-category="masterplan" onclick="openLightbox('images/baireni_masterplan.jpg', 'बैरेनी जग्गा एकीकरण आयोजना थ्रीडी मास्टरप्लान', 'मादी नदीको डीलदेखि व्यास मार्गसम्म फैलिएको २६१ रोपनी क्षेत्रको आधुनिक बस्ती विकास मास्टरप्लान')">
-                    <div class="gallery-img-wrap">
-                        <img src="images/baireni_masterplan.jpg" alt="मास्टरप्लान">
-                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
-                    </div>
-                    <div class="gallery-caption">
-                        <span class="gallery-tag-pill">मास्टरप्लान</span>
-                        <h4>आयोजनाको थ्रीडी मास्टरप्लान डिजाइन</h4>
-                        <p>सडक, पार्क, आवासीय प्लट र हरियालीको योजनाबद्ध खाका</p>
-                    </div>
-                </div>
+            <!-- Loading Spinner -->
+            <div id="gallery-loading" style="text-align:center; padding:50px 0; color:var(--text-medium);">
+                <i class="fas fa-circle-notch fa-spin fa-2x" style="color:var(--primary); margin-bottom:12px;"></i>
+                <p style="font-size:15px; margin:0;">तस्बिरहरू लोड हुँदैछन्...</p>
+            </div>
 
-                <!-- Card 2 -->
-                <div class="gallery-card" data-category="infra" onclick="openLightbox('images/baireni_roads.jpg', 'कालोपत्रे सडक तथा टिक ड्रेन नाला', 'बैरेनी आयोजना क्षेत्रमा निर्माणाधीन सडक पूर्वाधार, कभर नाला तथा बिजुली पोलहरू')">
-                    <div class="gallery-img-wrap">
-                        <img src="images/baireni_roads.jpg" alt="सडक निर्माण">
-                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
-                    </div>
-                    <div class="gallery-caption">
-                        <span class="gallery-tag-pill">सडक पूर्वाधार</span>
-                        <h4>कालोपत्रे सडक तथा टिक ड्रेन नाला</h4>
-                        <p>८ मि. र ७ मि. चौडा सडकमा नाला कभर तथा बिजुली पोल</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="gallery-card" data-category="nature" onclick="openLightbox('images/baireni_aerial.jpg', 'बैरेनी उपत्यका तथा मादी नदी डिलको विहङ्गम दृश्य', 'महर्षि वेदव्यासको तपोभूमि दमौली नजिकैको प्राकृतिक सुन्दरता')">
-                    <div class="gallery-img-wrap">
-                        <img src="images/baireni_aerial.jpg" alt="बैरेनी दृश्य">
-                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
-                    </div>
-                    <div class="gallery-caption">
-                        <span class="gallery-tag-pill">प्राकृतिक दृश्य</span>
-                        <h4>बैरेनी क्षेत्र तथा मादी नदीको फाँट</h4>
-                        <p>मादी नदी कटानको डिल र पहाडको काखमा अवस्थित रमणीय क्षेत्र</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="gallery-card" data-category="infra" onclick="openLightbox('images/hero-baireni.jpg', 'पूर्वाधार विकास तथा बस्ती लेआउट', 'आयोजना क्षेत्रमा जग्गा सम्याउने तथा सिमाना पिल्लर राख्ने कार्य')">
-                    <div class="gallery-img-wrap">
-                        <img src="images/hero-baireni.jpg" alt="पूर्वाधार लेआउट">
-                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
-                    </div>
-                    <div class="gallery-caption">
-                        <span class="gallery-tag-pill">पूर्वाधार निर्माण</span>
-                        <h4>बस्ती लेआउट तथा सिमाना रेखांकन</h4>
-                        <p>स्वीकृत ब्लक प्लान अनुसार विकसित घडेरीको चारकिल्ला रेखांकन</p>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="gallery-card" data-category="masterplan" onclick="openLightbox('images/baireni_masterplan.jpg', 'मादी रिभरफ्रन्ट तथा हरित पार्क क्षेत्र', 'आयोजनाको पश्चिम डीलमा मादी नदी किनारको हरित खुला क्षेत्र')">
-                    <div class="gallery-img-wrap">
-                        <img src="images/baireni_masterplan.jpg" alt="हरित खुला क्षेत्र">
-                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
-                    </div>
-                    <div class="gallery-caption">
-                        <span class="gallery-tag-pill">मास्टरप्लान</span>
-                        <h4>सार्वजनिक खुला क्षेत्र र हरित पार्क (८.०५%)</h4>
-                        <p>२१ रोपनी २ आना क्षेत्रफलमा व्यवस्थित खुला सामुदायिक पार्क</p>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="gallery-card" data-category="infra" onclick="openLightbox('images/baireni_roads.jpg', 'खानेपानी तथा विद्युत वितरण प्रणाली', 'HDPE ७,४२८ मिटर पाइपलाइन र PSC पोल संरचना')">
-                    <div class="gallery-img-wrap">
-                        <img src="images/baireni_roads.jpg" alt="विद्युत तथा पानी">
-                        <div class="img-overlay"><i class="fas fa-search-plus"></i></div>
-                    </div>
-                    <div class="gallery-caption">
-                        <span class="gallery-tag-pill">उपयोगिता सेवा</span>
-                        <h4>Closed-Loop खानेपानी तथा विद्युतीकरण</h4>
-                        <p>घरघरमा शुद्ध पानी र सुरक्षित बिजुली आपूर्तिको आधुनिक संरचना</p>
-                    </div>
-                </div>
+            <!-- Pure Photo Grid (No captions underneath) -->
+            <div class="pure-photo-grid" id="gallery-photo-grid">
+                <!-- Dynamically populated by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- All Photos Section (Dynamic Loop from gallery_photos folder) -->
-    <section class="content-section" style="padding: 55px 0 75px 0; background: #f8fafc; border-top: 1px solid var(--border);">
-        <div class="container">
-            <div class="section-header text-center" style="margin-bottom: 35px;">
-                <span class="section-tag" style="background:#eaf2f8; color:var(--primary); padding:6px 16px; border-radius:20px; font-size:13px; font-weight:700; display:inline-block;">
-                    <i class="fas fa-folder-open" style="margin-right:6px; color:var(--secondary);"></i> फोल्डर: gallery_photos/
-                </span>
-                <h2 style="font-size: 32px; color: var(--primary-dark); margin-top: 12px; margin-bottom: 10px;">
-                    सबै तस्बिरहरू (All Photos)
-                </h2>
-                <p style="color: var(--text-medium); font-size: 15.5px; max-width: 720px; margin: 0 auto; line-height: 1.7;">
-                    आयोजनाको छुट्टै ग्यालरी फोल्डर (<code>gallery_photos/</code>) भित्र रहेका सम्पूर्ण फोटोग्राफहरू, नक्साहरू र निर्माण प्रगतिका दृश्यहरू। नयाँ फोटोहरू फोल्डरमा थप गरी सूचीमा समावेश गर्न सकिन्छ।
-                </p>
-                <div style="display:inline-flex; align-items:center; gap:10px; margin-top:16px; background:#fff; padding:7px 20px; border-radius:30px; border:1px solid var(--border); font-size:14px; color:var(--text-medium); box-shadow:0 2px 10px rgba(0,0,0,0.04);">
-                    <i class="fas fa-photo-video" style="color:var(--secondary-dark);"></i>
-                    <span>कुल उपलब्ध फोटोग्राफ: <strong id="photo-count-badge" style="color:var(--primary); font-size:15px;">०</strong></span>
-                </div>
-            </div>
-
-            <!-- Dynamic Photos Loop Container -->
-            <div class="gallery-grid-full" id="all-photos-grid">
-                <!-- Rendered dynamically by JavaScript loop -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox Modal with Full Navigation -->
+    <!-- Minimalist Lightbox Modal (Pure Focus on Image, Zero Captions) -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-        <div class="lightbox-inner" onclick="event.stopPropagation()">
-            <button class="lightbox-close" onclick="closeLightbox(null)" title="बन्द गर्नुहोस्"><i class="fas fa-times"></i></button>
-            <button class="lightbox-nav lightbox-prev" onclick="prevLightbox()" title="अघिल्लो तस्बिर"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-nav lightbox-next" onclick="nextLightbox()" title="पछिल्लो तस्बिर"><i class="fas fa-chevron-right"></i></button>
-            <img id="lightbox-img" src="" alt="Gallery Image">
-            <div class="lightbox-text">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
-                    <h3 id="lightbox-title" style="color:var(--primary-dark); font-size:18.5px; margin:0;"></h3>
-                    <span id="lightbox-counter" style="font-size:13px; color:var(--text-light); font-weight:600; background:#f4f7fb; padding:3px 10px; border-radius:12px; border:1px solid var(--border);"></span>
-                </div>
-                <p id="lightbox-desc" style="font-size:14px; color:var(--text-medium); margin:0; line-height:1.5;"></p>
-            </div>
+        <button class="lightbox-close-btn" onclick="closeLightbox(null)" title="बन्द गर्नुहोस्"><i class="fas fa-times"></i></button>
+        <button class="lightbox-arrow lightbox-arrow-left" onclick="prevLightbox(event)" title="अघिल्लो"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-arrow lightbox-arrow-right" onclick="nextLightbox(event)" title="पछिल्लो"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="lightbox-content-wrap" onclick="event.stopPropagation()">
+            <img id="lightbox-img" class="lightbox-img-el" src="" alt="बैरेनी तस्बिर">
+            <div id="lightbox-counter" class="lightbox-counter-pill">तस्बिर १ / १</div>
         </div>
     </div>
 
@@ -436,240 +374,167 @@
 
     <script src="js/main.js"></script>
     <script>
-        // ==========================================
-        // ग्यालरी फोल्डर (gallery_photos/) तस्बिर सूची
-        // नयाँ फोटो थप्न यस Array मा थप्नुहोस्
-        // ==========================================
-        const galleryPhotos = [
-            {
-                filename: "baireni_aerial.jpg",
-                title: "बैरेनी उपत्यका तथा मादी नदी डिलको विहङ्गम हवाई दृश्य",
-                category: "हवाई दृश्य",
-                desc: "व्यास नगरपालिका-१०, बैरेनीमा २६१ रोपनी क्षेत्रमा निर्माणाधीन आयोजनाको प्राकृतिक सुन्दरता र विहङ्गम परिदृश्य।",
-                date: "२०८१"
-            },
-            {
-                filename: "office building.jpg",
-                title: "आयोजना कार्यान्वयन इकाई (PIU) कार्यालय भवन",
-                category: "कार्यालय संरचना",
-                desc: "बैरेनी आयोजना क्षेत्रभित्रै सेवाग्राही र प्राविधिक टोलीका लागि निर्मित १,२७० वर्गफिटको प्रि-फ्याब कार्यालय भवन।",
-                date: "२०८०/८१"
-            },
-            {
-                filename: "Drain formworks.jpg",
-                title: "नाला निर्माण फर्मा (Formwork) तथा ढलान कार्य",
-                category: "पूर्वाधार निर्माण",
-                desc: "सडकको दुवैतर्फ पानी निकासका लागि टिक ड्रेन र मुख्य नालीको आरसीसी फर्मा तथा ढलान निर्माण कार्य।",
-                date: "२०८१"
-            },
-            {
-                filename: "baireni_roads.jpg",
-                title: "निर्माणाधीन सडक, नाला तथा विद्युतीकरण पूर्वाधार",
-                category: "पूर्वाधार निर्माण",
-                desc: "८ मिटर र ७ मिटर चौडाइका सडक, कभर नाला र PSC बिजुली पोलहरू सहित भौतिक संरचना विस्तार कार्य।",
-                date: "२०८०/८१"
-            },
-            {
-                filename: "IMG-20250604-WA0001.jpg",
-                title: "आयोजना निर्माण स्थलगत कार्य प्रगति (दृश्य १)",
-                category: "स्थलगत प्रगति",
-                desc: "बैरेनी जग्गा एकीकरण क्षेत्रमा भइरहेको भौतिक पूर्वाधार निर्माणको प्रत्यक्ष स्थलगत तस्बिर।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0002.jpg",
-                title: "सडक सब-बेस तथा नाला निर्माण कार्य (दृश्य २)",
-                category: "स्थलगत प्रगति",
-                desc: "सडकको चौडाइ यकिन गरी सब-ग्रेड तथा नाला संरचना निर्माण अघि बढाइएको दृश्य।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0003.jpg",
-                title: "घडेरी सिमांकन तथा जग्गा सम्याउने कार्य (दृश्य ३)",
-                category: "स्थलगत प्रगति",
-                desc: "स्वीकृत चक्लाबन्दी नक्सा अनुसार विकसित घडेरीहरूको सिमाना रेखांकन र जमिन सम्याउने काम।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0004.jpg",
-                title: "नाला कभर तथा सडक विस्तार कार्य (दृश्य ४)",
-                category: "स्थलगत प्रगति",
-                desc: "पैदलयात्री र सवारीका लागि सुरक्षित नाला कभर तथा सडक स्तरोन्नति कार्य।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0005.jpg",
-                title: "आयोजना क्षेत्रको स्थलगत अवलोकन तथा निर्माण (दृश्य ५)",
-                category: "स्थलगत प्रगति",
-                desc: "प्राविधिक टोली र उपभोक्ताहरूको प्रत्यक्ष उपस्थितिमा भौतिक संरचना निर्माण अनुगमन।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0006.jpg",
-                title: "सडक पूर्वाधार तथा पाइपलाइन बिछ्याउने कार्य (दृश्य ६)",
-                category: "स्थलगत प्रगति",
-                desc: "सडकमुनि खानेपानीको Closed-Loop पाइपलाइन बिछ्याउने र सुरक्षित नाला निर्माण।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0007.jpg",
-                title: "बस्ती विकास क्षेत्र तथा फाँटको प्रत्यक्ष दृश्य (दृश्य ७)",
-                category: "स्थलगत प्रगति",
-                desc: "मादी नदी डिलतर्फ फैलिएको बैरेनी फाँटमा घडेरी व्यवस्थापन र पहुँच सडक निर्माण।",
-                date: "२०८१"
-            },
-            {
-                filename: "IMG-20250604-WA0008.jpg",
-                title: "पूर्वाधार निर्माण कार्य तथा मेशिनरी परिचालन (दृश्य ८)",
-                category: "स्थलगत प्रगति",
-                desc: "आयोजना क्षेत्रमा हेभी मेशिनरी र कामदारद्वारा तीव्र गतिमा अघि बढिरहेको पूर्वाधार कार्य।",
-                date: "२०८१"
-            },
-            {
-                filename: "481133082_1187883366373113_8618426568652783150_n.jpg",
-                title: "आयोजना क्षेत्र तथा समुदाय अवलोकन तस्बिर",
-                category: "स्थलगत तस्बिर",
-                desc: "उपभोक्ता समिति र स्थानीय बासिन्दाहरूको प्रत्यक्ष सहभागितामा आयोजना क्षेत्रको अवलोकन।",
-                date: "२०८१"
-            },
-            {
-                filename: "baireni_masterplan.jpg",
-                title: "आयोजनाको थ्रीडी मास्टरप्लान डिजाइन",
-                category: "मास्टरप्लान",
-                desc: "मादी नदी डिलदेखि व्यास मार्गसम्म २६१ रोपनीमा फैलिएको आधुनिक बस्ती विकासको थ्रीडी मोडेल।",
-                date: "२०८०"
-            },
-            {
-                filename: "baireni_site_ground.jpg",
-                title: "मादी नदी डिल तथा आयोजनाको वास्तविक फाँट",
-                category: "स्थलगत तस्बिर",
-                desc: "मादी नदी किनारको डिल र बैरेनी आयोजना क्षेत्रमा जारी भौतिक पूर्वाधार निर्माणको प्रत्यक्ष फोटोग्राफ।",
-                date: "२०८१"
-            },
-            {
-                filename: "baireni_masterplan2.jpg",
-                title: "स्वीकृत चक्लाबन्दी ब्लक नक्सा (Detailed Block Plan)",
-                category: "चक्लाबन्दी नक्सा",
-                desc: "३४७ नयाँ घडेरी, ११ मि. मुख्य प्रवेश मार्ग, ८.०५% खुला हरित क्षेत्र समेटिएको विस्तृत चक्लाबन्दी नक्सा।",
-                date: "२०८० भदौ"
-            },
-            {
-                filename: "hero-baireni.jpg",
-                title: "बस्ती लेआउट तथा सिमाना पिल्लर रेखांकन कार्य",
-                category: "स्थलगत काम",
-                desc: "स्वीकृत ब्लक प्लान अनुसार विकसित घडेरीको चारकिल्ला रेखांकन, पिल्लर स्थापना र जमिन सम्याउने कार्य।",
-                date: "२०८०"
-            }
+        // ========================================================
+        // बैरेनी जग्गा एकीकरण आयोजना - रियल-टाइम फोटो ग्यालरी
+        // Real-Time Gallery: No captions underneath, dynamically
+        // queries gallery_photos/ in real time via GitHub API / manifest
+        // ========================================================
+
+        // Fallback photo list if network is completely offline
+        const fallbackPhotos = [
+            "baireni_aerial.jpg",
+            "baireni_roads.jpg",
+            "office building.jpg",
+            "Drain formworks.jpg",
+            "IMG-20250604-WA0001.jpg",
+            "IMG-20250604-WA0002.jpg",
+            "IMG-20250604-WA0003.jpg",
+            "IMG-20250604-WA0004.jpg",
+            "IMG-20250604-WA0005.jpg",
+            "IMG-20250604-WA0006.jpg",
+            "IMG-20250604-WA0007.jpg",
+            "IMG-20250604-WA0008.jpg",
+            "481133082_1187883366373113_8618426568652783150_n.jpg",
+            "baireni_masterplan.jpg",
+            "baireni_masterplan2.jpg",
+            "baireni_site_ground.jpg",
+            "hero-baireni.jpg"
         ];
 
-        let currentLightboxIndex = -1;
+        let loadedPhotos = [];
+        let currentLightboxIndex = 0;
 
-        // १. Filter category in top section
-        function filterGallery(category, btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const cards = document.querySelectorAll('.gallery-grid-full:not(#all-photos-grid) .gallery-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // Helper to check if a filename is an image
+        function isImage(filename) {
+            return /\.(jpe?g|png|webp|gif|svg|avif)$/i.test(filename);
         }
 
-        // २. Loop through gallery_photos/ and dynamically render cards
-        function renderAllPhotos() {
-            const grid = document.getElementById('all-photos-grid');
-            const countBadge = document.getElementById('photo-count-badge');
-            if (!grid) return;
+        // Real-time loader from gallery_photos/
+        async function loadPhotosRealTime(isManualRefresh = false) {
+            const refreshIcon = document.getElementById('refresh-icon');
+            if (refreshIcon) refreshIcon.classList.add('fa-spin');
 
-            if (countBadge) {
-                countBadge.textContent = `${galleryPhotos.length} वटा`;
+            let files = [];
+
+            // 1. First priority: Real-time query to GitHub Contents API
+            // (When user commits/adds new photos to gallery_photos/, they appear immediately)
+            try {
+                const apiUrl = `https://api.github.com/repos/zen-z-neur/baireni-land-pooling/contents/gallery_photos?t=${Date.now()}`;
+                const res = await fetch(apiUrl, { cache: 'no-cache' });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data)) {
+                        files = data
+                            .filter(item => item.type === 'file' && isImage(item.name))
+                            .map(item => item.name);
+                    }
+                }
+            } catch (err) {
+                console.warn('GitHub Contents API fetch failed, checking manifest.json:', err);
             }
+
+            // 2. Second priority: Fallback to local manifest.json
+            if (!files || files.length === 0) {
+                try {
+                    const manifestRes = await fetch(`gallery_photos/manifest.json?t=${Date.now()}`, { cache: 'no-cache' });
+                    if (manifestRes.ok) {
+                        const mData = await manifestRes.json();
+                        if (Array.isArray(mData)) {
+                            files = mData.filter(name => isImage(name));
+                        }
+                    }
+                } catch (err) {
+                    console.warn('Manifest fetch failed, using fallback list:', err);
+                }
+            }
+
+            // 3. Third priority: Static fallback list
+            if (!files || files.length === 0) {
+                files = fallbackPhotos;
+            }
+
+            loadedPhotos = files;
+            renderPureGallery();
+
+            if (refreshIcon) {
+                setTimeout(() => refreshIcon.classList.remove('fa-spin'), 400);
+            }
+        }
+
+        // Render pure photo tiles with NO captions underneath
+        function renderPureGallery() {
+            const grid = document.getElementById('gallery-photo-grid');
+            const loading = document.getElementById('gallery-loading');
+            const countEl = document.getElementById('gallery-count');
+
+            if (loading) loading.style.display = 'none';
+            if (countEl) countEl.textContent = `${loadedPhotos.length} वटा`;
+            if (!grid) return;
 
             grid.innerHTML = '';
 
-            galleryPhotos.forEach((photo, index) => {
-                const photoSrc = `gallery_photos/${photo.filename}`;
-                const card = document.createElement('div');
-                card.className = 'gallery-card';
-                card.setAttribute('data-index', index);
-                card.innerHTML = `
-                    <div class="gallery-img-wrap" style="position:relative; aspect-ratio:16/10; overflow:hidden;">
-                        <img src="${photoSrc}" alt="${photo.title}" loading="lazy" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;">
-                        <div class="img-overlay">
-                            <i class="fas fa-search-plus"></i>
+            loadedPhotos.forEach((filename, idx) => {
+                const tile = document.createElement('div');
+                tile.className = 'photo-tile';
+                tile.setAttribute('title', `तस्बिर #${idx + 1}`);
+
+                // Encode filename for URL safety
+                const encodedFilename = encodeURIComponent(filename).replace(/%2F/g, '/');
+                const photoSrc = `gallery_photos/${encodedFilename}`;
+
+                tile.innerHTML = `
+                    <img src="${photoSrc}" alt="बैरेनी तस्बिर" loading="lazy">
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-icon">
+                            <i class="fas fa-expand-alt"></i>
                         </div>
-                        <span style="position:absolute; top:10px; right:10px; background:rgba(13,43,69,0.75); backdrop-filter:blur(4px); color:white; font-size:11px; padding:3px 9px; border-radius:12px; font-weight:600;">
-                            तस्बिर #${index + 1}
-                        </span>
-                    </div>
-                    <div class="gallery-caption" style="padding:14px 18px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                            <span class="gallery-tag-pill" style="font-size:11px; font-weight:700;">${photo.category}</span>
-                            <small style="color:var(--text-light); font-size:12px;"><i class="far fa-image"></i> ${photo.filename}</small>
-                        </div>
-                        <h4 style="font-size:15.5px; color:var(--primary-dark); margin-bottom:5px; line-height:1.4;">${photo.title}</h4>
-                        <p style="font-size:13px; color:var(--text-medium); margin:0; line-height:1.5;">${photo.desc}</p>
                     </div>
                 `;
 
-                card.addEventListener('click', () => {
-                    openLightbox(photoSrc, photo.title, photo.desc, index);
+                tile.addEventListener('click', () => {
+                    openLightbox(idx);
                 });
 
-                grid.appendChild(card);
+                grid.appendChild(tile);
             });
         }
 
-        // ३. Lightbox Controls
-        function openLightbox(src, title, desc, index = -1) {
-            currentLightboxIndex = index;
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox-title').textContent = title || '';
-            document.getElementById('lightbox-desc').textContent = desc || '';
+        // Lightbox Functions
+        function openLightbox(index) {
+            if (!loadedPhotos || loadedPhotos.length === 0) return;
+            currentLightboxIndex = (index + loadedPhotos.length) % loadedPhotos.length;
             
+            const filename = loadedPhotos[currentLightboxIndex];
+            const encodedFilename = encodeURIComponent(filename).replace(/%2F/g, '/');
+            const photoSrc = `gallery_photos/${encodedFilename}`;
+
+            const imgEl = document.getElementById('lightbox-img');
             const counterEl = document.getElementById('lightbox-counter');
+
+            if (imgEl) imgEl.src = photoSrc;
             if (counterEl) {
-                if (index >= 0 && index < galleryPhotos.length) {
-                    counterEl.textContent = `तस्बिर ${index + 1} / ${galleryPhotos.length}`;
-                    counterEl.style.display = 'inline-block';
-                } else {
-                    counterEl.style.display = 'none';
-                }
+                counterEl.textContent = `तस्बिर ${currentLightboxIndex + 1} / ${loadedPhotos.length}`;
             }
 
             document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox(e) {
-            if (!e || e.target.id === 'lightbox' || e.target.closest('.lightbox-close')) {
+            if (!e || e.target.id === 'lightbox' || e.target.closest('.lightbox-close-btn')) {
                 document.getElementById('lightbox').classList.remove('open');
+                document.body.style.overflow = '';
             }
         }
 
-        function prevLightbox() {
-            if (galleryPhotos.length === 0) return;
-            if (currentLightboxIndex <= 0) {
-                currentLightboxIndex = galleryPhotos.length - 1;
-            } else {
-                currentLightboxIndex--;
-            }
-            const p = galleryPhotos[currentLightboxIndex];
-            openLightbox(`gallery_photos/${p.filename}`, p.title, p.desc, currentLightboxIndex);
+        function prevLightbox(e) {
+            if (e) e.stopPropagation();
+            openLightbox(currentLightboxIndex - 1);
         }
 
-        function nextLightbox() {
-            if (galleryPhotos.length === 0) return;
-            if (currentLightboxIndex >= galleryPhotos.length - 1) {
-                currentLightboxIndex = 0;
-            } else {
-                currentLightboxIndex++;
-            }
-            const p = galleryPhotos[currentLightboxIndex];
-            openLightbox(`gallery_photos/${p.filename}`, p.title, p.desc, currentLightboxIndex);
+        function nextLightbox(e) {
+            if (e) e.stopPropagation();
+            openLightbox(currentLightboxIndex + 1);
         }
 
         // Keyboard navigation
@@ -677,13 +542,13 @@
             const lb = document.getElementById('lightbox');
             if (!lb || !lb.classList.contains('open')) return;
             if (e.key === 'Escape') closeLightbox(null);
-            if (e.key === 'ArrowLeft') prevLightbox();
-            if (e.key === 'ArrowRight') nextLightbox();
+            if (e.key === 'ArrowLeft') prevLightbox(null);
+            if (e.key === 'ArrowRight') nextLightbox(null);
         });
 
-        // Initialize on DOM load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
-            renderAllPhotos();
+            loadPhotosRealTime();
         });
     </script>
 </body>

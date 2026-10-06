@@ -305,20 +305,6 @@ ul { list-style: none; }
     flex-wrap: wrap;
 }
 
-/* Decorative geometric shape */
-.hero::after {
-    content: '';
-    position: absolute;
-    right: -80px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    border: 2px solid rgba(255,255,255,0.05);
-    pointer-events: none;
-}
 
 .hero-scroll {
     position: absolute;
