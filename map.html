@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="ne">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>नक्सा तथा भू-उपयोग | बैरेनी जग्गा एकीकरण आयोजना - व्यास नगरपालिका, तनहुँ</title>
-    <meta name="description" content="बैरेनी जग्गा एकीकरण आयोजनाको स्वीकृत चक्लाबन्दी नक्सा, चारकिल्ला, भू-उपयोग वर्गीकरण, सडक सञ्जाल तथा गुगल म्याप अवस्थिति।">
+    <meta name="description"
+        content="बैरेनी जग्गा एकीकरण आयोजनाको स्वीकृत चक्लाबन्दी नक्सा, चारकिल्ला, भू-उपयोग वर्गीकरण, सडक सञ्जाल तथा गुगल म्याप अवस्थिति।">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <!-- Top Bar -->
@@ -66,7 +70,8 @@
     </nav>
 
     <!-- Page Hero -->
-    <section class="page-hero" style="background: linear-gradient(135deg, rgba(13,43,69,0.9), rgba(26,82,118,0.95)), url('images/baireni_masterplan.jpg') center/cover;">
+    <section class="page-hero"
+        style="background: linear-gradient(135deg, rgba(13,43,69,0.9), rgba(26,82,118,0.95)), url('images/baireni_masterplan.jpg') center/cover;">
         <div class="container">
             <div class="page-hero-content">
                 <h1><i class="fas fa-map-marked-alt"></i> स्वीकृत नक्सा तथा भू-उपयोग योजना</h1>
@@ -87,13 +92,16 @@
                 <div>
                     <!-- Tabs -->
                     <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
-                        <button onclick="switchMap(this, 'google')" class="map-tab active-tab" style="padding:11px 22px; border:2px solid var(--primary); border-radius:8px; background:var(--primary); color:white; cursor:pointer; font-family:'Hind Siliguri',sans-serif; font-size:15px; font-weight:600; transition:all 0.3s;">
+                        <button onclick="switchMap(this, 'google')" class="map-tab active-tab"
+                            style="padding:11px 22px; border:2px solid var(--primary); border-radius:8px; background:var(--primary); color:white; cursor:pointer; font-family:'Hind Siliguri',sans-serif; font-size:15px; font-weight:600; transition:all 0.3s;">
                             <i class="fas fa-satellite"></i> गुगल स्याटेलाइट नक्सा (Satellite View)
                         </button>
-                        <button onclick="switchMap(this, 'masterplan')" class="map-tab" style="padding:11px 22px; border:2px solid var(--border); border-radius:8px; background:white; color:var(--text-dark); cursor:pointer; font-family:'Hind Siliguri',sans-serif; font-size:15px; font-weight:600; transition:all 0.3s;">
+                        <button onclick="switchMap(this, 'masterplan')" class="map-tab"
+                            style="padding:11px 22px; border:2px solid var(--border); border-radius:8px; background:white; color:var(--text-dark); cursor:pointer; font-family:'Hind Siliguri',sans-serif; font-size:15px; font-weight:600; transition:all 0.3s;">
                             <i class="fas fa-drafting-compass"></i> स्वीकृत मास्टरप्लान नक्सा
                         </button>
-                        <button onclick="switchMap(this, 'roads')" class="map-tab" style="padding:11px 22px; border:2px solid var(--border); border-radius:8px; background:white; color:var(--text-dark); cursor:pointer; font-family:'Hind Siliguri',sans-serif; font-size:15px; font-weight:600; transition:all 0.3s;">
+                        <button onclick="switchMap(this, 'roads')" class="map-tab"
+                            style="padding:11px 22px; border:2px solid var(--border); border-radius:8px; background:white; color:var(--text-dark); cursor:pointer; font-family:'Hind Siliguri',sans-serif; font-size:15px; font-weight:600; transition:all 0.3s;">
                             <i class="fas fa-road"></i> सडक सञ्जाल तथा पूर्वाधार
                         </button>
                     </div>
@@ -103,26 +111,28 @@
                         <div class="map-interactive-wrapper" style="height: 540px;">
                             <iframe
                                 src="https://maps.google.com/maps?q=27.9972881,84.2539553+(Baireni+Land+Pooling+Project,+Vyas-10,+Tanahun)&amp;t=k&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                                width="100%"
-                                height="100%"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                                 title="Baireni Land Pooling Project Google Maps Satellite View">
                             </iframe>
                         </div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:12px; padding:14px 18px; background:#fff; border-radius:8px; border:1px solid var(--border);">
+                        <div
+                            style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:12px; padding:14px 18px; background:#fff; border-radius:8px; border:1px solid var(--border);">
                             <div>
-                                <span style="display:inline-block; background:var(--accent); color:#fff; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; margin-bottom:4px;">
+                                <span
+                                    style="display:inline-block; background:var(--accent); color:#fff; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; margin-bottom:4px;">
                                     <i class="fas fa-map-marker-alt"></i> प्रत्यक्ष भू-अवस्थिति (GPS Coordinates)
                                 </span>
-                                <h4 style="margin:2px 0 4px 0; font-size:16px; color:var(--primary-dark);">बैरेनी जग्गा एकीकरण आयोजना, व्यास नगरपालिका-१०, तनहुँ</h4>
+                                <h4 style="margin:2px 0 4px 0; font-size:16px; color:var(--primary-dark);">बैरेनी जग्गा
+                                    एकीकरण आयोजना, व्यास नगरपालिका-१०, तनहुँ</h4>
                                 <p style="font-size:13px; color:var(--text-light); margin:0;">
-                                    अक्षांश / देशान्तर: <strong>२७°५९'५०.२" उत्तर, ८४°१५'१४.२" पूर्व (27.9972881, 84.2539553)</strong>
+                                    अक्षांश / देशान्तर: <strong>२७°५९'५०.२" उत्तर, ८४°१५'१४.२" पूर्व (27.9972881,
+                                        84.2539553)</strong>
                                 </p>
                             </div>
                             <div>
-                                <a href="https://maps.app.goo.gl/1mKsbAi3sd88psxE6" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:10px 18px; font-size:14px;">
+                                <a href="https://maps.app.goo.gl/1mKsbAi3sd88psxE6" target="_blank"
+                                    rel="noopener noreferrer" class="btn btn-primary"
+                                    style="padding:10px 18px; font-size:14px;">
                                     <i class="fas fa-external-link-alt"></i> गुगल म्यापमा खोल्नुहोस्
                                 </a>
                             </div>
@@ -132,13 +142,16 @@
                     <!-- Masterplan View -->
                     <div id="map-masterplan" class="map-view" style="display:none;">
                         <div class="map-interactive-wrapper">
-                            <img src="images/baireni_masterplan.jpg" alt="बैरेनी जग्गा एकीकरण आयोजना स्वीकृत मास्टरप्लान नक्सा" class="map-img-fluid">
+                            <img src="images/baireni_masterplan.jpg"
+                                alt="बैरेनी जग्गा एकीकरण आयोजना स्वीकृत मास्टरप्लान नक्सा" class="map-img-fluid">
                             <div style="padding: 16px 20px; background: #fff; border-top: 1px solid var(--border);">
                                 <h4 style="color:var(--primary-dark); margin:0 0 6px 0; font-size:16px;">
-                                    <i class="fas fa-check-circle" style="color:var(--success);"></i> बैरेनी जग्गा एकीकरण आयोजना (प्रथम चरण) - स्वीकृत चक्लाबन्दी नक्सा
+                                    <i class="fas fa-check-circle" style="color:var(--success);"></i> बैरेनी जग्गा
+                                    एकीकरण आयोजना (प्रथम चरण) - स्वीकृत चक्लाबन्दी नक्सा
                                 </h4>
                                 <p style="font-size:13.5px; color:var(--text-medium); margin:0;">
-                                    मादी नदीको माथिल्लो डिलदेखि व्यास मार्गसम्म फैलिएको २६१ रोपनी क्षेत्रफलमा व्यवस्थित आवासीय घडेरी, ८/७/६/४ मिटर चौडा सडक, ढल निकास र खुल्ला पार्कहरूको वैज्ञानिक संयोजन।
+                                    मादी नदीको माथिल्लो डिलदेखि व्यास मार्गसम्म फैलिएको २६१ रोपनी क्षेत्रफलमा व्यवस्थित
+                                    आवासीय घडेरी, ८/७/६/४ मिटर चौडा सडक, ढल निकास र खुल्ला पार्कहरूको वैज्ञानिक संयोजन।
                                 </p>
                             </div>
                         </div>
@@ -150,19 +163,24 @@
                             <img src="images/baireni_roads.jpg" alt="सडक सञ्जाल तथा पूर्वाधार" class="map-img-fluid">
                             <div style="padding: 16px 20px; background: #fff; border-top: 1px solid var(--border);">
                                 <h4 style="color:var(--primary-dark); margin:0 0 6px 0; font-size:16px;">
-                                    <i class="fas fa-road" style="color:var(--primary);"></i> ४,१८१ मिटर आधुनिक सडक सञ्जाल तथा पूर्वाधार लेआउट
+                                    <i class="fas fa-road" style="color:var(--primary);"></i> ४,१८१ मिटर आधुनिक सडक
+                                    सञ्जाल तथा पूर्वाधार लेआउट
                                 </h4>
                                 <p style="font-size:13.5px; color:var(--text-medium); margin:0;">
-                                    ८ मिटर मुख्य प्रवेश सडक, ७ मिटर द्वितीयक सडक, ६ मिटर आवासीय पहुँच सडक र ४ मिटर शाखा सडकहरू टिक ड्रेन नाला, बिजुली पोल र भूमिगत खानेपानी सञ्जालसहित।
+                                    ८ मिटर मुख्य प्रवेश सडक, ७ मिटर द्वितीयक सडक, ६ मिटर आवासीय पहुँच सडक र ४ मिटर शाखा
+                                    सडकहरू टिक ड्रेन नाला, बिजुली पोल र भूमिगत खानेपानी सञ्जालसहित।
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Official Land Use Table -->
-                    <div style="margin-top: 40px; background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); border:1px solid var(--border);">
-                        <h3 style="color:var(--primary-dark); font-size:20px; margin-bottom:15px; border-bottom:2px solid var(--border); padding-bottom:10px;">
-                            <i class="fas fa-table" style="color:var(--secondary); margin-right:8px;"></i> आयोजनाको स्वीकृत भू-उपयोग वर्गीकरण तालिका
+                    <div
+                        style="margin-top: 40px; background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); border:1px solid var(--border);">
+                        <h3
+                            style="color:var(--primary-dark); font-size:20px; margin-bottom:15px; border-bottom:2px solid var(--border); padding-bottom:10px;">
+                            <i class="fas fa-table" style="color:var(--secondary); margin-right:8px;"></i> आयोजनाको
+                            स्वीकृत भू-उपयोग वर्गीकरण तालिका
                         </h3>
                         <div class="table-responsive">
                             <table class="gov-table">
@@ -204,20 +222,13 @@
                                     <tr>
                                         <td>४</td>
                                         <td><strong>बिक्रीयोग्य जग्गा (Sales Plot)</strong></td>
-                                        <td>६,२१४.८९</td>
-                                        <td><strong>१२-३-१-४</strong></td>
-                                        <td><span style="color:#e67e22; font-weight:700;">४.६५%</span></td>
-                                        <td>पूर्वाधार निर्माण लागत तथा TDF ऋण भुक्तानीका लागि</td>
+                                        <td>६,३४७.३१</td>
+                                        <td><strong>१२-७-२-३</strong></td>
+                                        <td><span style="color:#e67e22; font-weight:700;">४.७५%</span></td>
+                                        <td>पूर्वाधार निर्माण लागत तथा TDF ऋण भुक्तानीका लागि आरक्षित</td>
                                     </tr>
-                                    <tr>
-                                        <td>५</td>
-                                        <td><strong>खाद्य तथा गुण नियन्त्रण विभाग</strong></td>
-                                        <td>१३२.४२</td>
-                                        <td><strong>०-४-०-३</strong></td>
-                                        <td><span style="color:#8e44ad; font-weight:700;">०.१०%</span></td>
-                                        <td>सार्वजनिक सेवा संरचना प्रयोजन</td>
-                                    </tr>
-                                    <tr style="background:#f4f7fb; font-weight:700; border-top:2px solid var(--primary);">
+                                    <tr
+                                        style="background:#f4f7fb; font-weight:700; border-top:2px solid var(--primary);">
                                         <td colspan="2" style="text-align:right;"><strong>कुल जम्मा:</strong></td>
                                         <td><strong>१,३३,५८२.२१</strong></td>
                                         <td><strong>२६२-९-०-४</strong></td>
@@ -233,25 +244,32 @@
                 <!-- Right Sidebar Details -->
                 <div>
                     <!-- Four Boundaries Card -->
-                    <div class="card" style="border: 1px solid var(--border); border-top: 5px solid var(--secondary); box-shadow: var(--shadow); margin-bottom: 25px;">
+                    <div class="card"
+                        style="border: 1px solid var(--border); border-top: 5px solid var(--secondary); box-shadow: var(--shadow); margin-bottom: 25px;">
                         <div class="card-body" style="padding: 22px;">
-                            <h4 style="color:var(--primary-dark); font-size:17px; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px;">
-                                <i class="fas fa-compass" style="color:var(--secondary); margin-right:6px;"></i> चार किल्ला सीमांकन
+                            <h4
+                                style="color:var(--primary-dark); font-size:17px; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px;">
+                                <i class="fas fa-compass" style="color:var(--secondary); margin-right:6px;"></i> चार
+                                किल्ला सीमांकन
                             </h4>
                             <div style="font-size:14px; line-height:2;">
-                                <div style="margin-bottom:10px; padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #3498db;">
+                                <div
+                                    style="margin-bottom:10px; padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #3498db;">
                                     <strong style="color:var(--primary);">पूर्व:</strong><br>
                                     व्यास मार्ग देखि करिब ५० मिटर भित्र
                                 </div>
-                                <div style="margin-bottom:10px; padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #e74c3c;">
+                                <div
+                                    style="margin-bottom:10px; padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #e74c3c;">
                                     <strong style="color:#c0392b;">पश्चिम:</strong><br>
                                     मादी नदीले कटान गरी बनेको माथिल्लो डील
                                 </div>
-                                <div style="margin-bottom:10px; padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #27ae60;">
+                                <div
+                                    style="margin-bottom:10px; padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #27ae60;">
                                     <strong style="color:#27ae60;">उत्तर:</strong><br>
                                     बोटेनी खोल्सी
                                 </div>
-                                <div style="padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #f39c12;">
+                                <div
+                                    style="padding:8px 12px; background:#f8fafc; border-radius:6px; border-left:3px solid #f39c12;">
                                     <strong style="color:#d35400;">दक्षिण:</strong><br>
                                     बोटे गाउँ जाने पक्की सडक
                                 </div>
@@ -260,10 +278,13 @@
                     </div>
 
                     <!-- Road Hierarchy Card -->
-                    <div class="card" style="border: 1px solid var(--border); border-top: 5px solid var(--primary); box-shadow: var(--shadow); margin-bottom: 25px;">
+                    <div class="card"
+                        style="border: 1px solid var(--border); border-top: 5px solid var(--primary); box-shadow: var(--shadow); margin-bottom: 25px;">
                         <div class="card-body" style="padding: 22px;">
-                            <h4 style="color:var(--primary-dark); font-size:17px; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px;">
-                                <i class="fas fa-road" style="color:var(--primary); margin-right:6px;"></i> सडक वर्गीकरण तथा लम्बाइ
+                            <h4
+                                style="color:var(--primary-dark); font-size:17px; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px;">
+                                <i class="fas fa-road" style="color:var(--primary); margin-right:6px;"></i> सडक वर्गीकरण
+                                तथा लम्बाइ
                             </h4>
                             <table style="width:100%; border-collapse:collapse; font-size:13.5px;">
                                 <tr style="border-bottom:1px solid #eee;">
@@ -291,15 +312,20 @@
                     </div>
 
                     <!-- Contact Map Assistance -->
-                    <div class="card" style="background:linear-gradient(135deg, #154360, #1a5276); color:#fff; border-radius:var(--radius);">
+                    <div class="card"
+                        style="background:linear-gradient(135deg, #154360, #1a5276); color:#fff; border-radius:var(--radius);">
                         <div class="card-body" style="padding:22px;">
                             <h4 style="color:#fff; font-size:17px; margin-bottom:10px;">
-                                <i class="fas fa-question-circle" style="color:var(--secondary); margin-right:6px;"></i> कित्ता तथा नक्सा सोधपुछ
+                                <i class="fas fa-question-circle" style="color:var(--secondary); margin-right:6px;"></i>
+                                कित्ता तथा नक्सा सोधपुछ
                             </h4>
-                            <p style="font-size:13.5px; color:rgba(255,255,255,0.85); line-height:1.7; margin-bottom:15px;">
-                                आफ्नो साविक कित्ता र प्रस्तावित विकसित घडेरीको नक्सा यकिन गर्न आयोजना कार्यान्वयन इकाई (PIU) बैरेनी कार्यालयमा सम्पर्क गर्न सक्नुहुन्छ।
+                            <p
+                                style="font-size:13.5px; color:rgba(255,255,255,0.85); line-height:1.7; margin-bottom:15px;">
+                                आफ्नो साविक कित्ता र प्रस्तावित विकसित घडेरीको नक्सा यकिन गर्न आयोजना कार्यान्वयन इकाई
+                                (PIU) बैरेनी कार्यालयमा सम्पर्क गर्न सक्नुहुन्छ।
                             </p>
-                            <a href="contact.html" class="btn btn-secondary" style="width:100%; justify-content:center; font-size:14px; padding:10px 16px;">
+                            <a href="contact.html" class="btn btn-secondary"
+                                style="width:100%; justify-content:center; font-size:14px; padding:10px 16px;">
                                 <i class="fas fa-phone-alt"></i> अमिन / प्राविधिक सम्पर्क
                             </a>
                         </div>
@@ -318,7 +344,8 @@
                         <img src="images/nepal-emblem.svg" alt="निशान छाप" style="width:45px; height:auto;">
                         <h3 style="margin:0; font-size:18px;">बैरेनी जग्गा एकीकरण आयोजना</h3>
                     </div>
-                    <p>व्यास नगरपालिका, नगर कार्यपालिकाको कार्यालय, दमौली, तनहुँ अन्तर्गत सञ्चालित दिगो, सुरक्षित र व्यवस्थित शहरी विकासको नमुना परियोजना।</p>
+                    <p>व्यास नगरपालिका, नगर कार्यपालिकाको कार्यालय, दमौली, तनहुँ अन्तर्गत सञ्चालित दिगो, सुरक्षित र
+                        व्यवस्थित शहरी विकासको नमुना परियोजना।</p>
                 </div>
                 <div class="footer-links">
                     <h4>द्रुत लिङ्कहरू</h4>
@@ -334,16 +361,22 @@
                 <div class="footer-links">
                     <h4>सम्बन्धित निकायहरू</h4>
                     <ul>
-                        <li><a href="https://vyasmun.gov.np" target="_blank"><i class="fas fa-external-link-alt"></i> व्यास नगरपालिका</a></li>
-                        <li><a href="https://moud.gov.np" target="_blank"><i class="fas fa-external-link-alt"></i> शहरी विकास मन्त्रालय</a></li>
-                        <li><a href="https://tdf.org.np" target="_blank"><i class="fas fa-external-link-alt"></i> नगर विकास कोष (TDF)</a></li>
-                        <li><a href="https://nset.org.np" target="_blank"><i class="fas fa-external-link-alt"></i> NSET नेपाल</a></li>
+                        <li><a href="https://vyasmun.gov.np" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                व्यास नगरपालिका</a></li>
+                        <li><a href="https://moud.gov.np" target="_blank"><i class="fas fa-external-link-alt"></i> शहरी
+                                विकास मन्त्रालय</a></li>
+                        <li><a href="https://tdf.org.np" target="_blank"><i class="fas fa-external-link-alt"></i> नगर
+                                विकास कोष (TDF)</a></li>
+                        <li><a href="https://nset.org.np" target="_blank"><i class="fas fa-external-link-alt"></i> NSET
+                                नेपाल</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>सम्पर्क विवरण</h4>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>बैरेनी, व्यास-१०, तनहुँ, गण्डकी प्रदेश</span></div>
-                    <div class="contact-item"><i class="fas fa-building"></i><span>नगर कार्यपालिका कार्यालय: दमौली, तनहुँ</span></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>बैरेनी, व्यास-१०, तनहुँ, गण्डकी
+                            प्रदेश</span></div>
+                    <div class="contact-item"><i class="fas fa-building"></i><span>नगर कार्यपालिका कार्यालय: दमौली,
+                            तनहुँ</span></div>
                     <div class="contact-item"><i class="fas fa-phone-alt"></i><span>०६५-५६०१६६, ०६५-५६०६३२</span></div>
                     <div class="contact-item"><i class="fas fa-envelope"></i><span>info@vyasmun.gov.np</span></div>
                 </div>
@@ -375,4 +408,5 @@
         }
     </script>
 </body>
+
 </html>
