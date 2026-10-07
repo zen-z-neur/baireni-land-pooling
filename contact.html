@@ -11,6 +11,104 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <style>
+        .contact-layout-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 36px;
+            align-items: start;
+        }
+        .official-row {
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+        .official-row:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateX(2px);
+        }
+        .official-info {
+            min-width: 0;
+            flex: 1;
+        }
+        .official-info .official-name {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 14.5px;
+            line-height: 1.35;
+        }
+        .official-info .official-role {
+            font-size: 12.5px;
+            color: var(--text-medium);
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+        .official-info .official-email {
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        .official-info .official-email a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        .official-info .official-email a:hover {
+            color: var(--primary);
+        }
+        .official-phone-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8f4f8;
+            color: var(--primary-dark);
+            padding: 6px 13px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12.5px;
+            text-decoration: none;
+            border: 1px solid #d0e7f2;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .official-phone-btn:hover {
+            background: #d8edf7;
+            border-color: var(--primary-light);
+            transform: scale(1.02);
+        }
+        .official-phone-btn.chair-btn {
+            background: #fef6e7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+        .official-phone-btn.chair-btn:hover {
+            background: #fdeec9;
+            border-color: #f59e0b;
+        }
+        @media (max-width: 992px) {
+            .contact-layout-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .official-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -87,7 +185,7 @@
     <!-- Contact Section -->
     <section class="content-section" style="padding: 50px 0;">
         <div class="container">
-            <div style="display:grid; grid-template-columns: 1fr 1.35fr; gap: 40px; align-items: start;">
+            <div class="contact-layout-grid">
                 <!-- Contact Info Cards -->
                 <div>
                     <div class="section-header" style="text-align:left; margin-bottom: 25px;">
@@ -155,8 +253,7 @@
                                 <i class="fas fa-envelope-open"></i>
                             </div>
                             <div>
-                                <h4 style="font-size:16px; color:var(--primary-dark); margin-bottom:5px;">इमेल तथा
-                                    कार्यालय समय</h4>
+                                <h4 style="font-size:16px; color:var(--primary-dark); margin-bottom:5px;">इमेल तथा कार्यालय समय</h4>
                                 <p style="font-size:14px; color:var(--text-medium); line-height:1.7; margin:0;">
                                     इमेल: info@vyasmun.gov.np<br>
                                     आइत–बिही: बिहान १०:०० – साँझ ५:०० (शुक्रबार: १०:०० – ३:००)
@@ -170,154 +267,109 @@
                         style="border:1px solid var(--border); padding:22px; border-radius:var(--radius); box-shadow:var(--shadow); background:#ffffff;">
                         <h4
                             style="color:var(--primary-dark); font-size:16.5px; margin-bottom:14px; border-bottom:2px solid var(--secondary); padding-bottom:8px; display:flex; align-items:center; justify-content:space-between;">
-                            <span><i class="fas fa-user-tie" style="color:var(--primary); margin-right:6px;"></i> प्रमुख
-                                सम्पर्क अधिकारीहरू</span>
-                            <small style="font-size:12px; color:var(--text-light); font-weight:normal;">व्यास
-                                नगरपालिका</small>
+                            <span><i class="fas fa-user-tie" style="color:var(--primary); margin-right:6px;"></i> प्रमुख सम्पर्क अधिकारीहरू</span>
+                            <small style="font-size:12px; color:var(--text-light); font-weight:normal;">व्यास नगरपालिका</small>
                         </h4>
                         <div style="display:flex; flex-direction:column; gap:11px;">
                             <!-- १. ई. रविन्द्र लाल मूल -->
-                            <div
-                                style="padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                                <div>
-                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">ई.
-                                        रविन्द्र लाल मूल</div>
-                                    <div style="font-size:12.5px; color:var(--text-medium);">आयोजना प्रमुख / वरिष्ठ
-                                        इन्जिनियर, PIU</div>
+                            <div class="official-row">
+                                <div class="official-info">
+                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">ई. रविन्द्र लाल मूल</div>
+                                    <div style="font-size:12.5px; color:var(--text-medium);">आयोजना प्रमुख / वरिष्ठ इन्जिनियर, PIU</div>
                                     <div style="font-size:12px; margin-top:2px;">
                                         <a href="mailto:ravindralalmul@gmail.com"
                                             style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                            <i class="fas fa-envelope"
-                                                style="color:var(--primary); font-size:11px;"></i>
+                                            <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i>
                                             ravindralalmul@gmail.com
                                         </a>
                                     </div>
                                 </div>
-                                <a href="tel:+9779856043491"
-                                    style="display:inline-flex; align-items:center; gap:6px; background:#e8f4f8; color:var(--primary-dark); padding:5px 12px; border-radius:20px; font-weight:700; font-size:13px; text-decoration:none; border:1px solid #d0e7f2; transition:all 0.2s;">
-                                    <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७
-                                    ९८५६०४३४९१
+                                <a href="tel:+9779856043491" class="official-phone-btn">
+                                    <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७ ९८५६०४३४९१
                                 </a>
                             </div>
 
-                            <!-- २. आ. मन्दिप श्रेष्ठ -->
-                            <div
-                                style="padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                                <div>
-                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;" आ. मन्दिप
-                                        श्रेष्ठ</div>
-                                        <div style="font-size:12.5px; color:var(--text-medium);">आर्किटेक्ट / इन्जिनियर,
-                                            PIU
-                                        </div>
-                                        <div style="font-size:12px; margin-top:2px;">
-                                            <a href="mailto:mandeep.landpooling@gmail.com"
-                                                style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                                <i class="fas fa-envelope"
-                                                    style="color:var(--primary); font-size:11px;"></i>
-                                                mandeep.landpooling@gmail.com
-                                            </a>
-                                        </div>
+                            <!-- २. ई. मन्दिप श्रेष्ठ -->
+                            <div class="official-row">
+                                <div class="official-info">
+                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">ई. मन्दिप श्रेष्ठ</div>
+                                    <div style="font-size:12.5px; color:var(--text-medium);">आर्किटेक्ट / इन्जिनियर, PIU</div>
+                                    <div style="font-size:12px; margin-top:2px;">
+                                        <a href="mailto:mandeep.landpooling@gmail.com"
+                                            style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                            <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i>
+                                            mandeep.landpooling@gmail.com
+                                        </a>
                                     </div>
-                                    <a href="tel:+9779840091001"
-                                        style="display:inline-flex; align-items:center; gap:6px; background:#e8f4f8; color:var(--primary-dark); padding:5px 12px; border-radius:20px; font-weight:700; font-size:13px; text-decoration:none; border:1px solid #d0e7f2; transition:all 0.2s;">
-                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७
-                                        ९८४००९१००१
-                                    </a>
                                 </div>
+                                <a href="tel:+9779840091001" class="official-phone-btn">
+                                    <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७ ९८४००९१००१
+                                </a>
+                            </div>
 
-                                <!-- ३. ई. कपिल रिजाल -->
-                                <div
-                                    style="padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                                    <div>
-                                        <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">ई.
-                                            कपिल
-                                            रिजाल</div>
-                                        <div style="font-size:12.5px; color:var(--text-medium);">इन्जिनियर, PIU</div>
-                                        <div style="font-size:12px; margin-top:2px;">
-                                            <a href="mailto:kapil.landpooling@gmail.com"
-                                                style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                                <i class="fas fa-envelope"
-                                                    style="color:var(--primary); font-size:11px;"></i>
-                                                kapil.landpooling@gmail.com
-                                            </a>
-                                        </div>
+                            <!-- ३. ई. कपिल रिजाल -->
+                            <div class="official-row">
+                                <div class="official-info">
+                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">ई. कपिल रिजाल</div>
+                                    <div style="font-size:12.5px; color:var(--text-medium);">इन्जिनियर, PIU</div>
+                                    <div style="font-size:12px; margin-top:2px;">
+                                        <a href="mailto:kapil.landpooling@gmail.com"
+                                            style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                            <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i>
+                                            kapil.landpooling@gmail.com
+                                        </a>
                                     </div>
-                                    <a href="tel:+9779840245225"
-                                        style="display:inline-flex; align-items:center; gap:6px; background:#e8f4f8; color:var(--primary-dark); padding:5px 12px; border-radius:20px; font-weight:700; font-size:13px; text-decoration:none; border:1px solid #d0e7f2; transition:all 0.2s;">
-                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७
-                                        ९८४०२४५२२५
-                                    </a>
                                 </div>
+                                <a href="tel:+9779840245225" class="official-phone-btn">
+                                    <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७ ९८४०२४५२२५
+                                </a>
+                            </div>
 
-                                <!-- ४. ब.स.ई. विकास रिमाल -->
-                                <div
-                                    style="padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                                    <div>
-                                        <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">
-                                            ब.स.ई.
-                                            विकास रिमाल</div>
-                                        <div style="font-size:12.5px; color:var(--text-medium);">वरिष्ठ सब-इन्जिनियर,
-                                            PIU
-                                        </div>
-                                        <div style="font-size:12px; margin-top:2px;">
-                                            <a href="mailto:civildost77@gmail.com"
-                                                style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                                <i class="fas fa-envelope"
-                                                    style="color:var(--primary); font-size:11px;"></i>
-                                                civildost77@gmail.com
-                                            </a>
-                                        </div>
+                            <!-- ४. ब.स.ई. विकास रिमाल -->
+                            <div class="official-row">
+                                <div class="official-info">
+                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">ब.स.ई. विकास रिमाल</div>
+                                    <div style="font-size:12.5px; color:var(--text-medium);">वरिष्ठ सब-इन्जिनियर, PIU</div>
+                                    <div style="font-size:12px; margin-top:2px;">
+                                        <a href="mailto:civildost77@gmail.com"
+                                            style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                            <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i>
+                                            civildost77@gmail.com
+                                        </a>
                                     </div>
-                                    <a href="tel:+9779846260363"
-                                        style="display:inline-flex; align-items:center; gap:6px; background:#e8f4f8; color:var(--primary-dark); padding:5px 12px; border-radius:20px; font-weight:700; font-size:13px; text-decoration:none; border:1px solid #d0e7f2; transition:all 0.2s;">
-                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७
-                                        ९८४६२६०३६३
-                                    </a>
                                 </div>
+                                <a href="tel:+9779846260363" class="official-phone-btn">
+                                    <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७ ९८४६२६०३६३
+                                </a>
+                            </div>
 
-                                <!-- ५. रोहित दरै -->
-                                <div
-                                    style="padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                                    <div>
-                                        <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">रोहित
-                                            दरै
-                                        </div>
-                                        <div style="font-size:12.5px; color:var(--text-medium);">सर्वेक्षक / अमिन
-                                            (कित्ता
-                                            नापजाँच तथा सोधपुछ)</div>
-                                        <div style="font-size:12px; margin-top:2px;">
-                                            <a href="mailto:rohit.landpooling@gmail.com"
-                                                style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                                <i class="fas fa-envelope"
-                                                    style="color:var(--primary); font-size:11px;"></i>
-                                                rohit.landpooling@gmail.com
-                                            </a>
-                                        </div>
+                            <!-- ५. रोहित दरै -->
+                            <div class="official-row">
+                                <div class="official-info">
+                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">रोहित दरै</div>
+                                    <div style="font-size:12.5px; color:var(--text-medium);">सर्वेक्षक / अमिन (कित्ता नापजाँच तथा सोधपुछ)</div>
+                                    <div style="font-size:12px; margin-top:2px;">
+                                        <a href="mailto:rohit.landpooling@gmail.com"
+                                            style="color:var(--text-light); text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                            <i class="fas fa-envelope" style="color:var(--primary); font-size:11px;"></i>
+                                            rohit.landpooling@gmail.com
+                                        </a>
                                     </div>
-                                    <a href="tel:+9779805887533"
-                                        style="display:inline-flex; align-items:center; gap:6px; background:#e8f4f8; color:var(--primary-dark); padding:5px 12px; border-radius:20px; font-weight:700; font-size:13px; text-decoration:none; border:1px solid #d0e7f2; transition:all 0.2s;">
-                                        <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७
-                                        ९८०५८८७५३३
-                                    </a>
                                 </div>
+                                <a href="tel:+9779805887533" class="official-phone-btn">
+                                    <i class="fas fa-phone-alt" style="color:#27ae60; font-size:11.5px;"></i> +९७७ ९८०५८८७५३३
+                                </a>
+                            </div>
 
-                                <!-- ६. श्रीराम कुँवर -->
-                                <div
-                                    style="padding:10px 12px; background:#f8fafc; border-radius:8px; border:1px solid #edf2f7; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                                    <div>
-                                        <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">
-                                            श्रीराम
-                                            कुँवर</div>
-                                        <div style="font-size:12.5px; color:var(--text-medium);">अध्यक्ष, आयोजना
-                                            उपभोक्ता
-                                            समिति</div>
-                                    </div>
-                                    <a href="tel:+9779846541425"
-                                        style="display:inline-flex; align-items:center; gap:6px; background:#fef6e7; color:#92400e; padding:5px 12px; border-radius:20px; font-weight:700; font-size:13px; text-decoration:none; border:1px solid #fde68a; transition:all 0.2s;">
-                                        <i class="fas fa-phone-alt" style="color:#d97706; font-size:11.5px;"></i> +९७७
-                                        ९८४६५४१४२५
-                                    </a>
+                            <!-- ६. श्रीराम कुँवर -->
+                            <div class="official-row">
+                                <div class="official-info">
+                                    <div style="font-weight:700; color:var(--primary-dark); font-size:14.5px;">श्रीराम कुँवर</div>
+                                    <div style="font-size:12.5px; color:var(--text-medium);">अध्यक्ष, आयोजना उपभोक्ता समिति</div>
                                 </div>
+                                <a href="tel:+9779846541425" class="official-phone-btn chair-btn">
+                                    <i class="fas fa-phone-alt" style="color:#d97706; font-size:11.5px;"></i> +९७७ ९८४६५४१४२५
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -413,8 +465,8 @@
                     </div>
                 </div>
 
-                <!-- Map Embed Below Contact Details -->
-                <div style="margin-top: 50px;">
+                <!-- Map Column -->
+                <div>
                     <div class="section-header" style="text-align:left; margin-bottom:20px;">
                         <span class="section-tag">गुगल स्याटेलाइट अवस्थिति</span>
                         <h2>आयोजना स्थल तथा कार्यालय अवस्थिति (बैरेनी, व्यास-१०)</h2>
@@ -445,6 +497,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- Footer -->
